@@ -1,13 +1,13 @@
 /*
  *
- * HomePage reducer
+ * Headlines reducer
  *
  */
 import produce from 'immer';
 import {
-  REQUEST_NEWSSOURCE,
-  NEWSSOURCE_SUCCESS,
-  NEWSSOURCE_ERROR,
+  REQUEST_HEADLINES,
+  HEADLINES_SUCCESS,
+  HEADLINES_ERROR,
 } from './constants';
 
 export const initialState = {
@@ -17,21 +17,21 @@ export const initialState = {
 };
 
 /* eslint-disable default-case, no-param-reassign */
-const homePageReducer = (state = initialState, action) =>
+const headlinesReducer = (state = initialState, action) =>
   produce(state, draft => {
     switch (action.type) {
-      case REQUEST_NEWSSOURCE:
+      case REQUEST_HEADLINES:
         draft.loading = true;
         break;
-      case NEWSSOURCE_SUCCESS:
+      case HEADLINES_SUCCESS:
         draft.loading = false;
-        draft.data = action.payload.sources;
+        draft.data = action.payload.articles;
         break;
-      case NEWSSOURCE_ERROR:
+      case HEADLINES_ERROR:
         draft.loading = false;
         draft.error = action.error;
         break;
     }
   });
 
-export default homePageReducer;
+export default headlinesReducer;

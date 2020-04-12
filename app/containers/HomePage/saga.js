@@ -1,6 +1,7 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
 import request from 'utils/request';
 import { REQUEST_NEWSSOURCE } from './constants';
+import { newsSourceSuccess, newsSourceError } from './actions';
 
 function* getNewsSource() {
   const requestURL = `https://newsapi.org/v2/sources?language=en&apiKey=${process.env.APP_API_KEY}`;
@@ -9,9 +10,9 @@ function* getNewsSource() {
   };
   try {
     const response = yield call(request, requestURL, requestParams);
-    console.log(response);
+    yield put(newsSourceSuccess(response.data));
   } catch (err) {
-    console.log(err);
+    yield put(newsSourceError(err));
   }
 }
 
