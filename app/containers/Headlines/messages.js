@@ -9,8 +9,8 @@ import { defineMessages } from 'react-intl';
 export const scope = 'app.containers.Headlines';
 
 export default defineMessages({
-  header: {
-    id: `${scope}.header`,
-    defaultMessage: 'This is the Headlines container!',
+  topHeadlines: {
+    id: `${scope}.topHeadlines`,
+    defaultMessage: 'Top Headlines',
   },
 });
